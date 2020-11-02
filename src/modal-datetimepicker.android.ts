@@ -121,8 +121,6 @@ export class ModalDatetimepicker {
 
         this.timePicker.show();
 
-        let toastMsg = "";
-
         if (options.minTime) {
           if (
             options.minTime.hour < 24 &&
@@ -134,11 +132,6 @@ export class ModalDatetimepicker {
               options.minTime.hour,
               options.minTime.minute
             );
-            toastMsg =
-              "Min Time: " +
-              options.minTime.hour +
-              ":" +
-              options.minTime.minute;
           } else {
             reject("Invalid minTime");
           }
@@ -155,21 +148,9 @@ export class ModalDatetimepicker {
               options.maxTime.hour,
               options.maxTime.minute
             );
-            toastMsg +=
-              " Max Time: " +
-              options.maxTime.hour +
-              ":" +
-              options.maxTime.minute;
           } else {
             reject("Invalid maxTime");
           }
-        }
-        if (toastMsg !== "") {
-          android.widget.Toast.makeText(
-            app.android.foregroundActivity,
-            toastMsg,
-            android.widget.Toast.LENGTH_LONG
-          ).show();
         }
       } catch (err) {
         reject(err);
